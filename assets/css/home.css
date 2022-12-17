@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Playfair Display', serif;
+    background-color: #540375;
+}
+
+/* Margin class */
+
+.mtop {
+    margin-top: 0.8rem;
+}
+
+/* Form for adding task */
+
+#container {
+    width: 50vw;
+    height: 85vh;
+    margin-inline: auto;
+    margin-top: 20px;
+    background-color: #10A19D;
+    -webkit-box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0); 
+    box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+}
+
+#header {
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+#form-container {
+    width: 100%;
+    height: 30%;
+    padding: 0.5rem;
+}
+
+#add-task-form {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 1fr) 2fr;
+}
+
+/* changing placeholder text color to make it visible with color theme */
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: black;
+    opacity: 0.5;
+}
+
+#add-task-form div {
+    padding: 0.7rem;
+    outline: 1px solid rgba(0,0,0,0.5);
+}
+
+#add-task-form label {
+    font-weight: 600;
+    display: block;
+}
+
+.task-desc-inp {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+#task-inp {
+    width: 100%;
+    background-color: rgba(0,0,0,0);
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+    transition: all 0.5s;
+}
+
+#task-inp:focus {
+    border-color: #FF7000;
+}
+
+#category-menu {
+    width: 95%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid black;
+}
+
+#date-inp {
+    width: 50%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid black;
+}
+
+/* Buttons */
+
+.btns-container {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    outline: none !important;
+}
+
+#submit-btn, #delete-btn {
+    width: 45%;
+    height: 100%;
+    border: none;
+    border-radius: 5px;
+    font-size: 2em;
+    transition: all 0.5s;
+}
+
+#submit-btn {
+    background-color: #FFBF00;
+}
+
+#submit-btn i {
+    transition: all 0.52s ease-in-out;
+}
+
+#submit-btn:hover {
+    background-color: #808000;
+    cursor: pointer;
+}
+
+/* animating plus sign */
+#submit-btn:hover i {
+    transform: rotate(360deg);
+}
+
+/* animating trashcan sign */
+#delete-btn:hover i {
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    perspective: 1000px;
+}
+
+@keyframes shake {
+    10%, 90% {
+        transform: translate3d(-1px, 0, 0);
+      }
+      
+      20%, 80% {
+        transform: translate3d(2px, 0, 0);
+      }
+    
+      30%, 50%, 70% {
+        transform: translate3d(-4px, 0, 0);
+      }
+    
+      40%, 60% {
+        transform: translate3d(4px, 0, 0);
+      }
+}
+
+#delete-btn {
+    background-color: #ff2400;
+}
+
+#delete-btn:hover {
+    background-color: #8A0707;
+    cursor: pointer;
+}
+
+#tasks-container {
+    width: 100%;
+    height: 52%;
+    position: relative;
+    top: 10%;
+    padding: 1rem;
+    overflow-y: scroll;
+    background-color: #FFFDD0;
+}
+
+#tasks-container::-webkit-scrollbar {   /* Hiding scrollbar of tasks container */
+    display: none;
+}
+
+#tasks-container .task {
+    width: 100%;
+    height: 25%;
+    margin-top: 1rem;
+}
+
+.task .task-details {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+
+.category-desc {
+    flex: 0 1 20%;
+}
+
+.task-desc, .category-desc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+    /* outline: 1px solid blue; */
+    font-weight: 600;
+}
+
+.task-desc {
+    flex: 0 1 80%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+}
+
+.task-desc label {
+    position: relative;
+    top: -5%;
+    margin-left: 1rem;
+}
+
+#task-header {
+    width: fit-content;
+}
+
+input[type=checkbox]:checked + label {
+    text-decoration: line-through;
+}
+
+.category-name {
+    width: 100%;
+    height: 50%;
+    background-color: #FF597B;
+    border-radius: 3px;
+    display: grid;
+    place-items: center;
+}
+
+.date-container {
+    flex: 0 0 100%;
+    padding-left: 2rem;
+    opacity: 0.7;
+    font-size: 0.8em;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    position: relative;
+    z-index: 5;
+    width: fit-content;
+}
+
+#instruction {
+    padding-left: 1rem;
+    z-index: 10;
+    font-weight: 900;
+}
